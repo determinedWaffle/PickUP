@@ -1,0 +1,35 @@
+<ion-view view-title='Create'>
+  <ion-header-bar>
+    <button class='button button-stable icon ion-chevron-left'></button>
+    <h1 class='title'>Create Event</h1>
+    <button class='button button-energized' ng-click='?'>Submit</button>
+  </ion-header-bar>
+  <ion-content class='list'>
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Date</span>
+      <input type="date">
+    </label>
+    <label class="item item-input item-select">
+      <span class="input-label">Time</span>
+      <select>
+<!-- TO BE POPULATED WITH AVAILABLE TIMES -->
+        <option></option>
+      </select>
+    </label>
+<!-- NOT SURE IF THIS IS THE RIGHT WAY -->
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Invite Player</span>
+      <input type="text">
+      <a href='#'></a>
+    </label>
+    <div class="item item-input-inset">
+      <label class="item-input-wrapper item-stacked-label">
+        <span class="input-label">Invite player</span>
+        <input type="email" placeholder="Email">
+      </label>
+      <button class="button button-energized button-small">
+        Invite
+      </button>
+    </div>
+  </ion-content>
+</ion-view>
