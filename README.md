@@ -26,7 +26,10 @@ If during the grunt pocesses you get this error: "Error: Hook failed with error 
 
 Follow these steps:
 
-1. Start your MySql server
-2. Go into the server folder from the root of the project: `cd server`
+1. Make sure you have MySql installed. If not, run `brew install mysql`
+2. Start your MySql server with `mysql.server start`
+3. Log into your mysql instance with `mysql -u root -p` and leave the password blank.
+4. Run `CREATE DATABASE pickupDB;` inside mysql.
+5. Exit MySql.
+2. Go back into the project folder then do `cd server`
 3. Run `nodemon server.js`
-
