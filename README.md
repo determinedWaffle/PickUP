@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/determinedwaffle/pickup.png?label=ready&title=Ready)](https://waffle.io/determinedwaffle/pickup)
 # pickup
 
 YO! This app was scaffolded out using [this Yeoman generator](https://github.com/diegonetto/generator-ionic).
