@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-  .controller('AppMap', function($scope, Auth, Court) {
+  .controller('AppMap', function($scope, Place, Court) {
     'use strict';
     console.log('hi dave');
     /*global google */
@@ -134,7 +134,7 @@ angular.module('starter.controllers')
                   // });
                   // $scope.infowindow.address = thisplace.formatted_address;
                   var contentString = '<div class="ugly">' + '<button> <a style="text-decoration: none;" href="#/app/schedule"' + '>' + place.name + '</a></button>' + '<div>';
-                  Auth.courtId.setCourtId(thisplace.id);
+                  Place.courtId.setCourtId(thisplace.id);
                   $scope.infowindow.setContent(contentString);
                   // Sets the content for this marker's popup window
                   // Opens the popup window for this marker

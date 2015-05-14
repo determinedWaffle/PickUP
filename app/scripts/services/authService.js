@@ -39,27 +39,12 @@ angular.module('auth.service', [])
       $window.localStorage.removeItem('com.app');
       $location.path('/login');
     };
-
-    var courtId = {
-      id: '',
-
-      setCourtId: function(value){
-       courtId.id = value; 
-      },
-
-      getCourtId: function() {
-        return  courtId.id;
-      }
-    };
     
-
-
     // allows functions to be referenced
     return {
       login: login,
       signup: signup,
       isAuth: isAuth,
       signout: signout,
-      courtId: courtId
     };
   });
