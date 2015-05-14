@@ -4,7 +4,11 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
+<<<<<<< HEAD
 angular.module('starter', ['ionic', 'starter.controllers', 'auth.service', 'court.service', 'place.service'])
+=======
+angular.module('starter', ['ionic', 'starter.controllers', 'auth.service', 'court.service'])
+>>>>>>> Copied over the form code from the original code; create now gets most of the way through creating an event.
 
   .run(function($ionicPlatform) {
     'use strict';

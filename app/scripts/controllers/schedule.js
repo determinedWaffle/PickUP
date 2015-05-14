@@ -1,5 +1,5 @@
 angular.module('starter')
-  .controller('ScheduleCtrl', function($scope, $state, Place) {
+  .controller('ScheduleCtrl', ['$scope', '$state', 'Court', 'Place', function($scope, $state, Court, Place) {
     'use strict';
 
     $scope.createEvent = function() {
@@ -9,4 +9,4 @@ angular.module('starter')
     //get courtId
     var k = Place.courtId.getCourtId();
     console.log("this is id", k);
-  });
+  }]);
