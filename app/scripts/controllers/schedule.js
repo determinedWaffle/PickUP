@@ -1,5 +1,8 @@
 angular.module('starter')
-  .controller('ScheduleCtrl', function($scope) {
+  .controller('ScheduleCtrl', function($scope, $state) {
     'use strict';
-    console.log('hi dave');
+
+    $scope.createEvent = function() {
+      $state.go('app.create');
+    };
   });
