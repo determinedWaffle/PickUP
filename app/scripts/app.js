@@ -93,4 +93,4 @@ angular.module('starter', ['ionic', 'starter.controllers', 'auth.service'])
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/playlists');
   })
-  .constant('apiEndpoint', {url: 'https://safe-badlands-7093.herokuapp.com/'});
+  .constant('apiEndpoint', {url: 'https://safe-badlands-7093.herokuapp.com'});
