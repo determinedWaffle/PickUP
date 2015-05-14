@@ -23,6 +23,9 @@ angular.module('starter.controllers', [])
       $scope.modal.show();
     };
 
+    // Form data for the login modal
+    $scope.signupData = {};
+
     // Create the login modal that we will use later
     $ionicModal.fromTemplateUrl('templates/signup.html', {
       scope: $scope
@@ -69,8 +72,30 @@ angular.module('starter.controllers', [])
       }, 1000);
     };
 
-    $scope.changeState = function(state){
-      console.log('Tostate: ', state);
+    // Perform user signup
+    $scope.doSignup = function(){
+      console.log('user signup: ', $scope.signupData);
+      Auth.signup($scope.signupData)
+        .then(function (credentials) {
+          var user = {
+            userId: credentials.id,
+            username: credentials.username,
+            createdAt: credentials.createdAt
+          };
+          console.log('signup server response: ', credentials);
+          //gives user a token stored in local storage
+          $window.localStorage.setItem('com.app', JSON.stringify(user));
+          //redirects users to home page
+          // $location.path('/');
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+        // Simulate a login delay. Remove this and replace with your login
+        // code if using a login system
+        $timeout(function() {
+          $scope.closeSignup();
+        }, 1000);
     };
 
 
