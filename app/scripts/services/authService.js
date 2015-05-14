@@ -1,8 +1,8 @@
-angular.module('auth.service', [])
-  .factory('Auth', function($http, $location, $window, $rootScope, apiEndpoint) {
-    'use strict';
-    // submits post request to backend to login.
-    var login = function(user) {
+angular.module('auth',[])
+  .factory('Auth', function ($http, $location, $window, apiEndpoint) {
+
+    //submits post request to backend to login.
+    var login = function (user) {
       return $http({
         method: 'POST',
         url: apiEndpoint.url + '/api/users/login',
@@ -19,7 +19,7 @@ angular.module('auth.service', [])
     var signup = function(user) {
       return $http({
         method: 'POST',
-        url: '/api/users/signup',
+        url: apiEndpoint.url + '/api/users/signup',
         data: user
       })
         .then(function(resp) {
