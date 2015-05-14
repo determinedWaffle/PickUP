@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-  .controller('AppMap', function($scope) {
+  .controller('AppMap', function($scope, Auth, Court) {
     'use strict';
     console.log('hi dave');
     /*global google */
@@ -102,12 +102,27 @@ angular.module('starter.controllers')
               animation: google.maps.Animation.DROP
             });
 
+            $scope.writeAddressName = function(latLng) {
+              var geocoder = new google.maps.Geocoder();
+              geocoder.geocode({
+                'location': latLng
+              },
+                function(results, status) {
+                  if (status === google.maps.GeocoderStatus.OK) {
+                    document.getElementById('address').innerHTML = results[0].formatted_addresss;
+                  } else {
+                    document.getElementById('error').innerHTML += 'Unable to retrieve your address' + '<br />';
+                  }
+                });
+            };
+
             //      // Adds a click listener on the created marker that
             // gets additional details from Google Places ($scope.service)
             google.maps.event.addListener(bballMarkers, 'click', function() {
               $scope.service.getDetails({
                 placeId: place.place_id
               }, function(thisplace, status) {
+                /*jshint camelcase: false */
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
                   // If successful, this will use the court service to retrieve the
                   // list of rsvp's for the court if it exists and set current court data
@@ -117,13 +132,16 @@ angular.module('starter.controllers')
                   //  address: thisplace.formatted_address,
                   //  placeId: thisplace.place_id
                   // });
+                  // $scope.infowindow.address = thisplace.formatted_address;
+                  var contentString = '<div class="ugly">' + '<button> <a style="text-decoration: none;" href="#/app/schedule"' + '>' + place.name + '</a></button>' + '<div>';
+                  Auth.courtId.setCourtId(thisplace.id);
+                  $scope.infowindow.setContent(contentString);
+                  // Sets the content for this marker's popup window
+                  // Opens the popup window for this marker
                 }
               });
-              // Sets the content for this marker's popup window
-              $scope.infowindow.setContent(place.name);
-              // Opens the popup window for this marker
               $scope.infowindow.open($scope.map, this);
-              toggleBounce.call(this, bballMarker);
+              //toggleBounce.call(this, bballMarker);
             });
           };
 
