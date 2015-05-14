@@ -1,4 +1,4 @@
-angular.module('auth.service',[])
+angular.module('auth',[])
   .factory('Auth', function ($http, $location, $window, apiEndpoint) {
 
     //submits post request to backend to login.
@@ -19,7 +19,7 @@ angular.module('auth.service',[])
     var signup = function (user) {
       return $http({
         method: 'POST',
-        url: '/api/users/signup',
+        url: apiEndpoint.url + '/api/users/signup',
         data: user
       })
       .then(function (resp) {
