@@ -33,3 +33,8 @@ Follow these steps:
 5. Exit MySql.
 2. Go back into the project folder then do `cd server`
 3. Run `nodemon server.js`
+
+### Server Heroku Deployment
+
+1. [Deploy to herku](https://devcenter.heroku.com/articles/git)
+2. Add-on clearDB MySql database, [follow this instructions](https://devcenter.heroku.com/articles/cleardb#provisioning-the-add-on)
