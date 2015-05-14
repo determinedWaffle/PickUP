@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-  .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+  .controller('AppCtrl', function($scope, $ionicModal, $timeout, Auth) {
     'use strict';
     // Form data for the login modal
     $scope.loginData = {};
@@ -31,6 +31,24 @@ angular.module('starter.controllers', [])
       $timeout(function() {
         $scope.closeLogin();
       }, 1000);
+
+      Auth.login($scope.loginData)
+        .then(function (credentials) {
+          var user = {
+            userId: credentials.id,
+            username: credentials.username,
+            createdAt: credentials.createdAt
+          };
+          console.log('login server response: ', credentials);
+          //gives user a token stored in local storage
+          // $window.localStorage.setItem('com.app', JSON.stringify(user));
+          //redirects users to home page
+          // $location.path('/');
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+      
     };
   })
 
