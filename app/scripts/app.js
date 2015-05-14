@@ -50,6 +50,27 @@ angular.module('starter', ['ionic', 'starter.controllers'])
           }
         }
       })
+// ADDED BY AUSTIN
+      .state('app.schedule', {
+        url: '/schedule',
+        views: {
+          'menuContent':{
+            templateUrl: 'templates/schedule.html',
+            controller: 'ScheduleCtrl'
+          }
+        }
+      })
+// ADDED BY AUSTIN
+      .state('app.create', {
+        url: '/create',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/create.html',
+            controller: 'CreateCtrl'
+          }
+        }
+      })
+
       .state('app.playlists', {
         url: '/playlists',
         views: {
