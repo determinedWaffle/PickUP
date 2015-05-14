@@ -1,10 +1,15 @@
 // used for logging incoming request
 var morgan = require('morgan');
 
+// middleware for dynamically or statically enabling CORS in express/connect applications
+var cors = require('cors');
+
 //ensures all requests are stored in the body.
 var bodyParser = require('body-parser');
 
 module.exports = function (app, express) {
+  // Enable all cors request
+  app.use(cors());
 
   //creates routers for user, rsvp, and courts
   var userRouter = express.Router();
