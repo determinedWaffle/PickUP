@@ -5,31 +5,47 @@
     <button class='button button-energized' ng-click="">Submit</button>
   </ion-header-bar>
   <ion-content class='list'>
-    <label class="item item-input item-floating-label">
-      <span class="input-label">Date</span>
-      <input type="date">
-    </label>
-    <label class="item item-input item-select">
-      <span class="input-label">Time</span>
-      <select>
-<!-- TO BE POPULATED WITH AVAILABLE TIMES -->
-        <option></option>
-      </select>
-    </label>
-<!-- NOT SURE IF THIS IS THE RIGHT WAY -->
-    <label class="item item-input item-floating-label">
-      <span class="input-label">Invite Player</span>
-      <input type="text">
-      <a href='#'></a>
-    </label>
-    <div class="item item-input-inset">
-      <label class="item-input-wrapper item-stacked-label">
-        <span class="input-label">Invite player</span>
-        <input type="email" placeholder="Email">
+    <form name='rsvpForm' ng-submit='addRsvp()' novalidate>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Days from now</span>
+        <input type='date' ng-model='rsvp.date' placeholder='{ new Date() }'  required/>
+        <!-- <input type='date' required> -->
+       <!--  <select>
+          <option>0</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select> -->
       </label>
-      <button class="button button-energized button-small" >
-        Invite
-      </button>
-    </div>
+      <label class="item item-input item-select">
+        <span class="input-label">Start Time</span>
+        <input type='time' ng-model='rsvp.starttime' placeholder='Start-time' required/>
+        <!-- <input type='time'> -->
+
+      </label>
+  <!-- NOT SURE IF THIS IS THE RIGHT WAY -->
+      <label>
+        <span class="input-label">End Time</span>
+        <input type='time' ng-model='rsvp.endtime' placeholder='End-time' required/>
+      </label>
+     <!--  <label class="item item-input item-floating-label">
+        <span class="input-label">Invite Player</span>
+        <input type="text">
+        <a href='#'></a>
+      </label> -->
+      <div class="item item-input-inset">
+        <label class="item-input-wrapper item-stacked-label">
+          <span class="input-label">Invite player</span>
+          <input type="email" placeholder="Email">
+        </label>
+        <button class="button button-energized button-small" >
+          Invite
+        </button>
+      </div>
+
+      <button class='buttonInput button button-energized button-bar' type='submit' ng-disabled="rsvpForm.$invalid">Submit RSVP!</button>
+    </form>
   </ion-content>
 </ion-view>
