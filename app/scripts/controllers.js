@@ -3,6 +3,7 @@ angular.module('starter.controllers', [])
   .controller('AppCtrl', function($scope, $ionicModal, $timeout, Auth, $window) {
     'use strict';
     // Form data for the login modal
+    // console.log("im executed");
     $scope.loginData = {};
 
     // Create the login modal that we will use later
@@ -14,7 +15,7 @@ angular.module('starter.controllers', [])
 
     // Triggered in the login modal to close it
     $scope.closeLogin = function() {
-      console.log('Close login');
+      // console.log('Close login in ctroller');
       $scope.modal.hide();
     };
 
@@ -40,6 +41,8 @@ angular.module('starter.controllers', [])
 
     // Open the login modal
     $scope.signup = function() {
+      // console.log("signup called", $scope.modalSignup);
+      $scope.modal.hide();
       $scope.modalSignup.show();
     };
 
@@ -70,6 +73,8 @@ angular.module('starter.controllers', [])
       $timeout(function() {
         $scope.closeLogin();
       }, 1000);
+
+      $scope.loginData = {};
     };
 
     // Perform user signup
@@ -97,9 +102,12 @@ angular.module('starter.controllers', [])
           $scope.closeSignup();
         }, 1000);
     };
+    $scope.logout = function() {
+      Auth.signout();
+      $scope.modal.show();
+    };
 
-
-  })
+  }) 
 
   .controller('PlaylistsCtrl', function($scope) {
     'use strict';

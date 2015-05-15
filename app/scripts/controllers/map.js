@@ -1,7 +1,109 @@
 angular.module('starter.controllers')
-  .controller('AppMap', function($scope, Court) {
+  .controller('AppMap', function($scope, Court, $ionicModal, $timeout, Auth, $window) {
     'use strict';
-    console.log('hi dave');
+    // console.log('hi dave');
+    $scope.loginData = {};
+    // Login Modal playground
+
+    // Create the login modal that we will use later
+    $ionicModal.fromTemplateUrl('templates/login.html', {
+      scope: $scope
+    }).then(function(modal) {
+      $scope.modal = modal;
+      modal.show();
+    });
+
+    // Triggered in the login modal to close it
+    $scope.closeLogin = function() {
+      // console.log('Close login');
+      $scope.modal.hide();
+    };
+
+    // Open the login modal
+    $scope.login = function() {
+      $scope.modalSignup.hide();
+      $scope.modal.show();
+    };
+
+    $scope.doLogin = function() {
+      console.log('Doing login', $scope.loginData);
+
+
+      Auth.login($scope.loginData)
+        .then(function (credentials) {
+          var user = {
+            userId: credentials.id,
+            username: credentials.username,
+            createdAt: credentials.createdAt
+          };
+          console.log('login server response: ', credentials);
+          //gives user a token stored in local storage
+          $window.localStorage.setItem('com.app', JSON.stringify(user));
+          //redirects users to home page
+          // $location.path('/');
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+      
+      // Simulate a login delay. Remove this and replace with your login
+      // code if using a login system
+      $timeout(function() {
+        $scope.closeLogin();
+      }, 1000);
+
+      $scope.loginData = {};
+    };
+
+    // Form data for the login modal
+    $scope.signupData = {};
+
+    // Create the login modal that we will use later
+    $ionicModal.fromTemplateUrl('templates/signup.html', {
+      scope: $scope
+    }).then(function(modal) {
+      $scope.modalSignup = modal;
+    });
+
+    $scope.doSignup = function(){
+      console.log('user signup: ', $scope.signupData);
+      Auth.signup($scope.signupData)
+        .then(function (credentials) {
+          var user = {
+            userId: credentials.id,
+            username: credentials.username,
+            createdAt: credentials.createdAt
+          };
+          console.log('signup server response: ', credentials);
+          //gives user a token stored in local storage
+          $window.localStorage.setItem('com.app', JSON.stringify(user));
+          //redirects users to home page
+          // $location.path('/');
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+        // Simulate a login delay. Remove this and replace with your login
+        // code if using a login system
+        $timeout(function() {
+          $scope.closeSignup();
+        }, 1000);
+    };
+
+    // Triggered in the login modal to close it
+    $scope.closeSignup = function() {
+      $scope.modalSignup.hide();
+    };
+
+    // Open the login modal
+    $scope.signup = function() {
+      console.log("signup called", $scope.modalSignup);
+      $scope.modal.hide();
+      $scope.modalSignup.show();
+    };
+
+    // Playgound end
+
     /*global google */
     /*jshint unused: false, undef:false */
     $scope.service = {};
