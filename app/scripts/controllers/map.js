@@ -127,11 +127,11 @@ angular.module('starter.controllers')
                   // If successful, this will use the court service to retrieve the
                   // list of rsvp's for the court if it exists and set current court data
                   // in the Court service
-                  // Court.getCourtSchedule({
-                  //  name: thisplace.name,
-                  //  address: thisplace.formatted_address,
-                  //  placeId: thisplace.place_id
-                  // });
+                   Court.getCourtSchedule({
+                    name: thisplace.name,
+                    address: thisplace.formatted_address,
+                    placeId: thisplace.place_id
+                   });
                   // $scope.infowindow.address = thisplace.formatted_address;
                   var contentString = '<div class="ugly">' + '<button> <a style="text-decoration: none;" href="#/app/schedule"' + '>' + place.name + '</a></button>' + '<div>';
                   Place.courtId.setCourtId(thisplace.id);
