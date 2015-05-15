@@ -93,5 +93,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'auth', 'court.servic
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/browse');
   })
-  // .constant('apiEndpoint', {url: 'https://safe-badlands-7093.herokuapp.com'});
-  .constant('apiEndpoint', {url: 'http://d7e580bb.ngrok.io'});
+  .constant('apiEndpoint', {url: 'https://safe-badlands-7093.herokuapp.com'});
+  // .constant('apiEndpoint', {url: 'http://d7e580bb.ngrok.io'});
