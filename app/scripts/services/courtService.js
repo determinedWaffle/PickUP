@@ -26,6 +26,8 @@
       // Set the this variable because .then will execute in global context
       var that = this;
 
+      console.log("-----> court:", court);
+
       // Retrieves either data in our database or data directly
       // from the Google Places query (retrieved in map.js)
       this.getCourtInfo(court)
@@ -33,6 +35,7 @@
 
           // Sets the currentCourt data held in the Court service
           // This populates courtPartial
+        
           that.currentCourtData.name = results.name;
           that.currentCourtData.address = results.address;
           that.currentCourtData.schedule = [];
