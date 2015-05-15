@@ -69,5 +69,14 @@ angular.module('starter')
       // clear the court data in the court service,
       // causing the court view to clear and hide itself
       $scope.court.currentCourtData = {};
+
+      function reload() {
+        console.log("courtINfo", Court.courtInfo);
+        Court.getCourtSchedule(Court.courtInfo);
+        
+        $state.go('app.schedule', {reload: true});
+      }
+      reload();
+ // <----
     };
   }]);

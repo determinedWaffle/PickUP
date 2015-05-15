@@ -1,12 +1,20 @@
 angular.module('starter')
-  .controller('ScheduleCtrl', ['$scope', '$state', 'Court', 'Place', function($scope, $state, Court, Place) {
+  .controller('ScheduleCtrl', ['$scope', '$state', 'Court', function($scope, $state, Court) {
     'use strict';
-
+    console.log("inside ScheduleCtrl, Court is:", Court);
     $scope.createEvent = function() {
       $state.go('app.create');
     };
+    $scope.name = Court.currentCourtData.name;
+    $scope.times= Court.currentCourtData.schedule;
+    // Trying $scope.watch
+    $scope.$watch(function(){return Court.currentCourtData.schedule},
+                  function(newVal, oldVal){
+                    if (typeof newVal !== 'undefined') {
+                      $scope.times= Court.currentCourtData.schedule;
+                      }
+                    }
+                  );
 
-    //get courtId
-    var k = Place.courtId.getCourtId();
-    console.log("this is id", k);
+    console.log("inside ScheduleCtrl, $scope.times is:", $scope.times);
   }]);

@@ -1,15 +1,15 @@
 <ion-view view-title='Schedule'>
   <ion-content>
-    <div class='list card'>
+    <div class='list card' ng-controller="ScheduleCtrl as schedule">
       <div class='item item-divider item-icon-left'>
         <i class='icon ion-calendar'></i>
-        <h2>Court Name</h2><!-- DYNAMICALLY GENERATED -->
-        <p>Today's Schedule:</p>
+        <h2>{{name}}</h2><!-- DYNAMICALLY GENERATED -->
+        <p>Schedule:</p>
       </div>
 
-      <div class='item'>
-        10:10 AM<!-- TIME WILL BE DYNAMICALLY GENERATED -->
-        <!-- TO BE REPEATED FOR EACH PLAYER: -->
+      <div class='item' ng-repeat='time in times'>
+        {{ time.count }} Players @ {{time['starttime'] | date:'MM/dd, h:mma'}}
+        
         <a class='item-avatar-right' href='#'>
           <img src="assets/img/placeholder-hi.png">
         </a>
