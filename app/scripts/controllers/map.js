@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-  .controller('AppMap', function($scope, Place, Court) {
+  .controller('AppMap', function($scope, Court) {
     'use strict';
     console.log('hi dave');
     /*global google */
@@ -74,7 +74,7 @@ angular.module('starter.controllers')
            */
 
           $scope.populateMarkers = function(results, status) {
-            console.log('populate marker', results, status);
+            // console.log('populate marker', results, status);
             if (status === google.maps.places.PlacesServiceStatus.OK) {
               for (var i = 0; i < results.length; i++) {
                 $scope.createMarker(results[i]);
@@ -85,7 +85,7 @@ angular.module('starter.controllers')
           console.log('later service', $scope.service);
 
           $scope.createMarker = function(place) {
-            console.log('this basketball was called');
+            // console.log('this basketball was called');
             // sets the basketball image to be used. This can also be a vector graphic. (one exists in assets/img)
             var image = {
               url: 'assets/img/verysmallball.png',
@@ -134,7 +134,7 @@ angular.module('starter.controllers')
                    });
                   // $scope.infowindow.address = thisplace.formatted_address;
                   var contentString = '<div class="ugly">' + '<button> <a style="text-decoration: none;" href="#/app/schedule"' + '>' + place.name + '</a></button>' + '<div>';
-                  Place.courtId.setCourtId(thisplace.id);
+                  // Place.courtId.setCourtId(thisplace.id);
                   $scope.infowindow.setContent(contentString);
                   // Sets the content for this marker's popup window
                   // Opens the popup window for this marker

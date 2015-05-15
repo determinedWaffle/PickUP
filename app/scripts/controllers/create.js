@@ -1,7 +1,6 @@
 angular.module('starter')
-  .controller('CreateCtrl', ['$scope', '$window', 'Court', 'Place', function($scope, $state, $window, Court, Place) {
+  .controller('CreateCtrl', ['$scope', '$state', '$window', 'Court', function($scope, $state, $window, Court) {
     'use strict';
-    console.log('hi dave 2');
 
     $scope.rsvp = {
 
@@ -9,7 +8,6 @@ angular.module('starter')
 
     $scope.court = Court;
 
-    console.log("this is court", $scope.court);
     // stores the state of the view
     $scope.state = $state;
 
@@ -20,16 +18,15 @@ angular.module('starter')
     };
 
     $scope.addRsvp = function() {
-      console.log($scope.rsvp);
       // stores submitted form data to fill out attributes of an rsvp
       var date = $scope.rsvp.date;
       var starttime = $scope.rsvp.starttime;
       var endtime = $scope.rsvp.endtime;
 
       // stores current court data stored on scope (comes from court service variables)
-      var courtName = $scope.court.currentCourtData.name;
-      var address = $scope.court.currentCourtData.address;
-      var placeId = $scope.court.currentCourtData.placeId;
+      var courtName = Court.currentCourtData.name;
+      var address = Court.currentCourtData.address;
+      var placeId = Court.currentCourtData.placeId;
 
       // adjusts time to appropriately store in the database
       starttime.setHours(starttime.getHours() - 1);

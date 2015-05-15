@@ -13,6 +13,7 @@
         params: court
       })
         .then(function(response) {
+          console.log("response is ", response);
           return response.data;
         });
     };
@@ -37,7 +38,6 @@
           that.currentCourtData.schedule = [];
           that.currentCourtData.id = results.id;
           that.currentCourtData.placeId = results.placeId;
-
           // if the results contain a unique id from our database..
           if (results.id) {
             // send a request to get all the rsvp's for that court
