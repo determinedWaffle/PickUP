@@ -32,6 +32,7 @@
       // from the Google Places query (retrieved in map.js)
       this.getCourtInfo(court)
         .then(function(results) {
+          console.log('results: ', results);
 
           // Sets the currentCourt data held in the Court service
           // This populates courtPartial
