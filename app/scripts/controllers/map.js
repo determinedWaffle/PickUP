@@ -137,7 +137,7 @@ angular.module('starter.controllers')
           bballMarker = new google.maps.Marker({
             position: pos,
             map: $scope.map,
-            icon: 'assets/img/verysmallball.png',
+            // icon: 'assets/img/verysmallball.png',
             animation: google.maps.Animation.DROP,
             content: 'Your location'
           });

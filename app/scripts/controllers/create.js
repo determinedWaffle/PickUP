@@ -13,9 +13,9 @@ angular.module('starter')
 
     // function to enable reloading of the view 
     // (used to reload views so they update to avoid cluttering with an ajax call)
-    $scope.reloadState = function() {
-      $scope.state.reload();
-    };
+    // $scope.reloadState = function() {
+    //   $scope.state.reload();
+    // };
 
     $scope.addRsvp = function() {
       // stores submitted form data to fill out attributes of an rsvp
@@ -60,7 +60,9 @@ angular.module('starter')
       console.log('create rvsp', rsvp);
       Court.postRsvp(rsvp)
         .then(function(data) {
-          $scope.reloadState();
+          // $scope.reloadState();
+          Court.getCourtSchedule(Court.courtInfo);
+          $state.go('app.schedule');
         });
 
       // clear the form in the court partial
@@ -70,13 +72,5 @@ angular.module('starter')
       // causing the court view to clear and hide itself
       $scope.court.currentCourtData = {};
 
-      function reload() {
-        console.log("courtINfo", Court.courtInfo);
-        Court.getCourtSchedule(Court.courtInfo);
-        
-        $state.go('app.schedule', {reload: true});
-      }
-      reload();
- // <----
     };
   }]);
