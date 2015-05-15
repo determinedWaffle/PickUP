@@ -85,19 +85,20 @@
         });
     };
 
-    ///**
+    // /**
     // * [postRsvp description]
     // * @param  {[Object]} rsvp [Holds the entered form data from the court partial]
     // * @return {[Object]}      [Returns RSVP data from database]
     // */
     this.postRsvp = function(rsvp) {
-     return $http({
-       method: 'POST',
-       url: '/api/rsvp/addRsvp',
-       data: rsvp
-     })
-       .then(function(resp) {
-         return resp.data;
-       });
+      console.log('post',rsvp);
+      return $http({
+        method: 'POST',
+        url: apiEndpoint.url + '/api/rsvp/addRsvp',
+        data: rsvp
+      })
+        .then(function(resp) {
+          return resp.data;
+        });
     };
   });
