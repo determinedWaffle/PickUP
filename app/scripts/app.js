@@ -94,3 +94,4 @@ angular.module('starter', ['ionic', 'starter.controllers', 'auth', 'court.servic
     $urlRouterProvider.otherwise('/app/browse');
   })
   .constant('apiEndpoint', {url: 'https://safe-badlands-7093.herokuapp.com'});
+  // .constant('apiEndpoint', {url: 'http://d7e580bb.ngrok.io'});
