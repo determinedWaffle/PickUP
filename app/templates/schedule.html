@@ -8,7 +8,7 @@
       </div>
 
       <div class='item' ng-repeat='time in times'>
-        {{time['starttime'] | date:'MM/dd/yyyy @ h:mma'}}
+        {{ time.count }} Players @ {{time['starttime'] | date:'MM/dd, h:mma'}}
         
         <a class='item-avatar-right' href='#'>
           <img src="assets/img/placeholder-hi.png">

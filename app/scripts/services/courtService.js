@@ -3,7 +3,7 @@
     // Sets initial data for courts partial
     // Can possibly be removed now
     this.currentCourtData = {};
-
+    this.courtInfo = {};
     // Attempts to find if an object returned
     // by Google Places API is in our database
     this.getCourtInfo = function(court) {
@@ -35,13 +35,14 @@
 
           // Sets the currentCourt data held in the Court service
           // This populates courtPartial
-        
+          that.courtInfo = court;
           that.currentCourtData.name = results.name;
           that.currentCourtData.address = results.address;
           that.currentCourtData.schedule = [];
           that.currentCourtData.id = results.id;
           that.currentCourtData.placeId = results.placeId;
           // if the results contain a unique id from our database..
+          console.log("result.id", results.id);
           if (results.id) {
             // send a request to get all the rsvp's for that court
             $http({
@@ -77,6 +78,7 @@
                   });
                 }
                 that.currentCourtData.schedule = blankArray;
+                console.log("schedule in courtService",that.currentCourtData.schedule)
               })
               .catch(function(error) {
                 return new Error('An error occurred while looking up the schedule: ', error);
