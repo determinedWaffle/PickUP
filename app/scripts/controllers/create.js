@@ -3,7 +3,7 @@ angular.module('starter')
     'use strict';
 
     $scope.rsvp = {
-
+      date: new Date()
     };
 
     $scope.court = Court;
